@@ -33,6 +33,7 @@ def analyze_data():
                 'station__location__state__name',
                 'station__location__country__name')
     alerts = 0
+    critical_alerts = 0
     for item in aggregation:
         alert = False
 
@@ -55,8 +56,17 @@ def analyze_data():
             client.publish(topic, message)
             alerts += 1
 
+            if variable == "temperatura" and item["check_value"] > max_value*1.2:
+                message = "CRITICAL {} {}".format(variable, max_value)
+                topic = '{}/{}/{}/{}/in_critical'.format(country, state, city, user)
+                print(datetime.now(), "Sending alert to {} {}".format(topic, variable))
+                client.publish(topic, message)
+                critical_alerts += 1
+
+                
     print(len(aggregation), "dispositivos revisados")
     print(alerts, "alertas enviadas")
+    print(critical_alerts, "alertas criticas enviadas")
 
 
 def on_connect(client, userdata, flags, rc):
