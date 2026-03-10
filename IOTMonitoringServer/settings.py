@@ -162,12 +162,12 @@ MQTT_HOST = "52.4.166.125"
 MQTT_PORT = 8082
 
 # Credenciales para el usuario suscriptor del bróker MQTT
-MQTT_USER = "admin"
-MQTT_PASSWORD = "admin"
+MQTT_USER = "ironman"
+MQTT_PASSWORD = "jervis123"
 
 # Credenciales para el usuario publicador del bróker MQTT
-MQTT_USER_PUB = "admin2"
-MQTT_PASSWORD_PUB = "admin2"
+MQTT_USER_PUB = "ironman"
+MQTT_PASSWORD_PUB = "jervis123"
 
 # Tópico a suscribir. "+/+/+/+/out" se suscribe únicamente a los
 # tópicos con forma <país>/<estado>/<ciudad>/<usuario>/out.
